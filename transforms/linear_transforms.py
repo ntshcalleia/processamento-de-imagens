@@ -1,7 +1,7 @@
 import numpy as np
 
 # Target-to-source Mapping
-def linear_transformation(src, A):
+def linear_transformation(src, A): # src: matrix representing image ; A: transformation matrix
   M, N, O = src.shape
 
   new_image = np.zeros((M, N, O), dtype=np.uint8)
