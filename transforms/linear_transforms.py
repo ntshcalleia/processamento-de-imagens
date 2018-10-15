@@ -1,4 +1,5 @@
 import numpy as np
+from transforms.interpolation import cubic
 
 # Target-to-source Mapping
 def linear_transformation(src, A): # src: matrix representing image ; A: transformation matrix
@@ -12,7 +13,7 @@ def linear_transformation(src, A): # src: matrix representing image ; A: transfo
       # Dot product using homogenous coordinates, with h = 1
       x, y, _ = np.dot(np.linalg.inv(A), [new_x, new_y, 1])
       if (x >= 0 and x < N and y >= 0 and y < M):
-        new_image[new_y][new_x] = src[int(y)][int(x)]
+        new_image[new_y][new_x] = cubic(src, x, y)
 
   return new_image
 

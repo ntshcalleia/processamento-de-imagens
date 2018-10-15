@@ -1,4 +1,5 @@
 import numpy as np
+from transforms.interpolation import cubic
 
 # Twirl
 def twirl(src, xc = None, yc = None, alpha = 0, rmax = None):
@@ -30,6 +31,6 @@ def twirl(src, xc = None, yc = None, alpha = 0, rmax = None):
       # If there's a pixel on the original image, at x, y
       if (x >= 0 and x < N and y >= 0 and y < M):
         # Pixel at position new_x, new_y will be at nearest neighbor
-        new_image[new_y][new_x] = src[int(y)][int(x)]
+        new_image[new_y][new_x] = cubic(src, x, y)
 
   return new_image
